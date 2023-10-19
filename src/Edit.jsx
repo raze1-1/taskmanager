@@ -8,7 +8,7 @@ function Edit({ task, onUpdate }) {
     };
 
   return (
-    <div>
+    <div className='min-h-screen flex items-center justify-center'>
         <input
             type="text"
             value={editedTask}

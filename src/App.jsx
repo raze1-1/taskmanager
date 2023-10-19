@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Edit from './Edit';
+import { Input } from '@material-tailwind/react';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -96,34 +97,38 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <h1>Task Manager</h1>
+    <div className='min-h-screen flex flex-col justify-center items-center'>
+      <h1 className='text-blue-500 text-2xl py-3'>Task Manager</h1>
+      <div className=''>
       <input 
         type="text"
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
         placeholder="What's new?"
+        className='mb-3 px-1 py-1'
       />
-      <button onClick={addTask}>Add Task</button>
+      </div>
+      <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={addTask}>Add Task</button>
       <ul>
         {tasks.map((task) => (
-          <li key={task._id}>
+          <li className='text-white' key={task._id}>
             {task.editing ? (
-              <div>
-                <input 
-                  type="text"
+              <div className=''>
+                <Input 
+                  className='text-black'
+                  label='Edit your task...'
                   value={task.description}
                   onChange={(e) => setUpdatedTaskDescription(task._id, e.target.value)}
                 />
-                <button onClick={() => saveTask(task._id)}>Save</button>
+                <button className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => saveTask(task._id)}>Save</button>
               </div>
             ) : (
-              <div>
+              <div className='space-x-5 mt-7'>
                 {task.description}
-                <button onClick={() => editTask(task._id)}>Edit</button>
+                <button className="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => editTask(task._id)}>Edit</button>
               </div>
             )}
-            <button onClick={() => deleteTask(task._id)}>Delete</button>
+            <button className="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => deleteTask(task._id)}>Delete</button>
           </li>
         ))}
       </ul>
