@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* imports tailwind.css */
 
 body {
     background-color: black;
@@ -9,3 +10,5 @@ img {
     height: auto;
     width: auto;
   }
+  
+/* makes background fully black */
