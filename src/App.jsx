@@ -1,19 +1,22 @@
 // App.jsx
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import Creator from './Creator';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Creator from "./Creator";
+import Navbar from "./Navbar";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <>
+      <Navbar />
+      <div>
         <Routes>
-          <Route path="/" element={<Home />} /> {/* Use "element" to specify the component */}
+          <Route path="/" element={<Home />} />{" "}
+          {/* Use "element" to specify the component */}
           <Route path="/tasks" element={<Creator />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </>
   );
 }
 
