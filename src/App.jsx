@@ -2,7 +2,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Creator from "./Creator";
+import Creator from "./components/Creator";
 import LogIn from "./LogIn";
 
 function App() {

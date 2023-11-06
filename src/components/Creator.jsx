@@ -1,6 +1,6 @@
 ﻿    // import modules from react, checkbox and input from material-tailwind for styling
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import '../App.css';
 import { Checkbox, Input } from '@material-tailwind/react';
     // define the main App function
 function Creator() {

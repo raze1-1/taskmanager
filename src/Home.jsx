@@ -1,7 +1,7 @@
 ﻿// In your Home.js or any other component where you want to provide navigation
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
-import Navbar from './Navbar'
+import Navbar from './components/Navbar'
 
 function Home() {
   return (
