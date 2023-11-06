@@ -3,6 +3,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Creator from "./Creator";
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <Route path="/" element={<Home />} />{" "}
           {/* Use "element" to specify the component */}
           <Route path="/tasks" element={<Creator />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </>
