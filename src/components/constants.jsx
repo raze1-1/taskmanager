@@ -64,4 +64,4 @@ const signupFields=[
     }
 ]
 
-export default loginFields
+export default loginFields; signupFields;

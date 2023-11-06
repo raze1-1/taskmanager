@@ -7,6 +7,7 @@ function Creator() {
   // basic state management using hooks
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   // utilising useEffect to fetch tasks from API when component is "mounted" (loaded into DOM)
   useEffect(() => {
     fetch('http://localhost:5000/api/tasks')
@@ -31,7 +32,10 @@ function Creator() {
 
   const addTask = () => {
     // add a new task by making a POST request to the api
-    if (newTask) {
+    if (!newTask.trim()) {
+      setErrorMessage("You have to input a task!")
+    } else {
+      setErrorMessage("");
       const taskData = {
         description: newTask,
         editing: false,
@@ -134,6 +138,9 @@ function Creator() {
           className='mb-2 px-1 py-1 text-white'
         />
       </div>
+      {errorMessage && (
+        <div className='text-red-500 mb-2'>{errorMessage}</div>
+      )}
       <button
         className="transition-colors duration-550 ease-linear hover:bg-green-500 text-black bg-white font-medium rounded-lg text-sm px-5 py-2 mb-2"
         onClick={addTask}
