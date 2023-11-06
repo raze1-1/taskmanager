@@ -15,7 +15,6 @@ function App() {
           {/* Use "element" to specify the component */}
           <Route path="/tasks" element={<Creator />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </>
