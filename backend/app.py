@@ -15,21 +15,21 @@ db = client['task_manager']
 tasks_collection = db['tasks']
 
 #defines a route for handling get and post requests
-@app.route('/api/tasks', methods=['GET', 'POST'])
-def tasks():
-    if request.method == 'GET':
-        tasks = list(tasks_collection.find({})) # retrieve all tasks from database
-        for task in tasks:
-            task['_id'] = str(task['_id']) #convert taskid to string
-        return jsonify(tasks) #return all tasks as json
-    
-    if request.method == 'POST':
-        data = request.get_json()
-        description = data['description']
-        task = {'description': description}
-        result = tasks_collection.insert_one(task) #insert new task into the database
-        task['_id'] = str(result.inserted_id) # convert objectid to string
-        return jsonify(task) #return new task as json
+@app.route('/api/tasks', methods=['GET'])
+def get_tasks():
+    tasks = list(tasks_collection.find({}))  # Retrieve all tasks from the database
+    for task in tasks:
+        task['_id'] = str(task['_id'])  # Convert task id to string
+    return jsonify(tasks)  # Return all tasks as JSON
+
+@app.route('/api/tasks', methods=['POST'])
+def create_task():
+    data = request.get_json()
+    description = data['description']
+    task = {'description': description}
+    result = tasks_collection.insert_one(task)  # Insert a new task into the database
+    task['_id'] = str(result.inserted_id)  # Convert ObjectId to string
+    return jsonify(task)  # Return the new task as JSON
 
 @app.route('/api/tasks/<string:task_id>', methods=['PUT']) #define route for updating task by put request, allowing edits to happen to a specific taskid
 def update_task(task_id):
