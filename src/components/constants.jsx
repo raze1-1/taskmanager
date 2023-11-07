@@ -1,9 +1,9 @@
-const loginFields=[
+export const loginFields=[
     {
         labelText:"Email address",
         labelFor:"email-address",
-        id:"email-address",
-        name:"email",
+        id:"emailaddress",
+        name:"emailaddress",
         type:"email",
         autoComplete:"email",
         isRequired:true,
@@ -21,7 +21,7 @@ const loginFields=[
     }
 ]
 
-const signupFields=[
+export const signupFields=[
     {
         labelText:"Username",
         labelFor:"username",
@@ -35,8 +35,8 @@ const signupFields=[
     {
         labelText:"Email Address",
         labelFor:"email-address",
-        id:"email-address",
-        name:"email-address",
+        id:"emailaddress",
+        name:"emailaddress",
         type:"email",
         autoComplete:"email",
         isRequired:true,
@@ -48,20 +48,18 @@ const signupFields=[
         id:"password",
         name:"password",
         type:"password",
-        autoComplete:"current-password",
+        autoComplete:"currentpassword",
         isRequired:true,
         placeholder:"Password"    
     },
     {
         labelText:"Confirm Password",
         labelFor:"confirm-password",
-        id:"confirm-password",
-        name:"confirm-password",
+        id:"confirmpassword",
+        name:"confirmpassword",
         type:"password",
-        autoComplete:"confirm-password",
+        autoComplete:"confirmpassword",
         isRequired:true,
         placeholder:"Confirm Password"
     }
 ]
-
-export default loginFields; signupFields;

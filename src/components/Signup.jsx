@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import signupFields from './constants';
+import { signupFields } from './constants';
 import FormAction from './FormAction';
 import Input from "./Input";
 
-const fields=signupFields;
+const fields = signupFields;
 let fieldsState = {};
 
 fields.forEach(field=>fieldsState[field.id]='');
@@ -17,12 +17,33 @@ export default function Sign(){
     
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(signUpState)
+        setsignUpState(fieldsState);
         createUser();
     }
 
     const createUser = () =>{
-
+        const userData = {
+            username: signUpState.username,
+            emailaddress: signUpState.emailaddress,
+            password: signUpState.password,
+        };
+        fetch('http://localhost:5000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => {
+            if (response.ok) {
+                console.log('Registration successful');
+            } else {
+                console.error('Registration failed')
+            }
+        })
+        .catch((error) => {
+            console.error("Registration error:", error);
+        })
     }
 
 
