@@ -1,4 +1,4 @@
-const fixedInputClass="text-sm text-gray-base w-full mr-3 py-5 px-3 h-1 border border-gray-900 rounded mb-2"
+const fixedInputClass="text-sm text-gray-base w-full mr-3 py-5 px-3 h-10 border border-gray-900 rounded mb-2"
 
 export default function Input({
     handleChange,
