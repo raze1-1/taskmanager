@@ -1,15 +1,17 @@
-import { useState } from "react";
-import { loginFields } from "./constants";
-import FormAction from "./FormAction";
-import FormExtra from "./FormExtra";
+import { useState } from 'react';
+import { loginFields } from './constants';
+import FormAction from './FormAction';
+import FormExtra from './FormExtra';
 import Input from "./Input";
 
 const fields = loginFields;
 let fieldsState = {};
-fields.forEach((field) => (fieldsState[field.id] = ""));
+fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Login() {
   const [loginState, setLoginState] = useState(fieldsState);
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loginFailure, setLoginFailure] = useState(false);
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -19,7 +21,9 @@ export default function Login() {
     e.preventDefault();
     authenticateUser();
   };
-  const authenticateUser = () => {};
+
+  const authenticateUser = () => {
+  };
 
   return (
     <div className="flex justify-center">
