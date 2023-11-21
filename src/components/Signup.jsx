@@ -22,8 +22,22 @@ export default function Sign() {
     }
 
     const createUser = () =>{
+        const userData = {
+            username: signUpState.username,
+            emailaddress: signUpState.emailaddress,
+            password: signUpState.password,
+        };
+        fetch('http://localhost:5000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ login: userData }),
+      })
 
     }
+
+
 
 
     return(
