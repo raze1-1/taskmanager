@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { loginFields } from './constants';
-import FormAction from './FormAction';
-import FormExtra from './FormExtra';
+import { useState } from "react";
+import { loginFields } from "./constants";
+import FormAction from "./FormAction";
+import FormExtra from "./FormExtra";
 import Input from "./Input";
+import bcrypt from "bcrypt";
 
 const fields = loginFields;
 let fieldsState = {};
-fields.forEach((field) => (fieldsState[field.id] = ''));
+fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login() {
   const [loginState, setLoginState] = useState(fieldsState);
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const [loginFailure, setLoginFailure] = useState(false);
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -23,6 +22,28 @@ export default function Login() {
   };
 
   const authenticateUser = () => {
+    const userData = {
+      username: loginState.username,
+      emailaddress: loginState.emailaddress,
+      password: bcrypt.hash(loginState.password, 10).toString(),
+    };
+    fetch("http://localhost:5000/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Login successful");
+        } else {
+          console.error("Login failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+      });
   };
 
   return (
