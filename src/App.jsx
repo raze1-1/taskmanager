@@ -16,6 +16,9 @@ function App() {
           <Route path="/tasks" element={<Creator />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="profile" element={<Profile />} />
+          </Route>
         </Routes>
       </div>
     </>

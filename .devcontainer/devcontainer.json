@@ -7,10 +7,10 @@
 	"features": {
 		"ghcr.io/devcontainers/features/python": {
 			"version": "os-provided",
-			"installTools": true,
-			"optimize": false,
+			"installTools": "true",
+			"optimize": "true",
 			"installPath": "/usr/local/python",
-			"installJupyterlab": false,
+			"installJupyterlab": "false",
 			"configureJupyterlabAllowOrigin": "",
 			"httpProxy": ""
 		}
