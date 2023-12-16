@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className=" text-white justify-center items-center flex flex-col min-h-screen">
+      <div className="text-white justify-center items-center flex flex-col min-h-screen">
         <h2 className="text-4xl">Welcome to 2Do</h2>
         <p className="text-sm md:text-sm text-center mt-5">
           2Do is a task management application that allows you to manage tasks
