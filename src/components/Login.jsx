@@ -3,12 +3,16 @@ import { loginFields } from "./constants";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
+import bcrypt from "bcrypt";
+import { useNavigate, Link } from "react-router-dom";
 
 const fields = loginFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login() {
+  const history = useNavigate();
+
   const [loginState, setLoginState] = useState(fieldsState);
 
   const handleChange = (e) => {
@@ -24,7 +28,7 @@ export default function Login() {
     const userData = {
       username: loginState.username,
       emailaddress: loginState.emailaddress,
-      password: signUpState.password,
+      password: bcrypt.hash(loginState.password, 10).toString(),
     };
     fetch("http://localhost:5000/api/users", {
       method: "POST",
@@ -36,6 +40,7 @@ export default function Login() {
       .then((response) => {
         if (response.ok) {
           console.log("Login successful");
+          history("/profile", { state: { username: loginState.username } });
         } else {
           console.error("Login failed");
         }
