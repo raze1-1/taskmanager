@@ -3,7 +3,6 @@ import { loginFields } from "./constants";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
-import bcrypt from "bcrypt";
 
 const fields = loginFields;
 let fieldsState = {};
@@ -25,7 +24,7 @@ export default function Login() {
     const userData = {
       username: loginState.username,
       emailaddress: loginState.emailaddress,
-      password: bcrypt.hash(loginState.password, 10).toString(),
+      password: signUpState.password,
     };
     fetch("http://localhost:5000/api/users", {
       method: "POST",

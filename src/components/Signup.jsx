@@ -3,14 +3,16 @@ import { signupFields } from "./constants";
 import FormAction from "./FormAction";
 import Input from "./Input";
 import { useNavigate } from "react-router-dom";
-import bcrypt from "bcrypt";
+
+
 
 const fields = signupFields;
 let fieldsState = {};
 
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
-export default function Sign() {
+
+export default function SignUp() {
   const [signUpState, setsignUpState] = useState(fieldsState);
 
   const handleChange = (e) => {
@@ -27,9 +29,9 @@ export default function Sign() {
     const userData = {
       username: signUpState.username,
       emailaddress: signUpState.emailaddress,
-      password: bcrypt.hash(signUpState.password, 10).toString(),
-    };
-    fetch("http://localhost:5000/api/users", {
+      password: signUpState.password,
+    }
+    fetch("http://127.0.0.1:5000/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,14 +41,11 @@ export default function Sign() {
       .then((response) => {
         if (response.ok) {
           console.log("Registration successful");
-          navigate("/login");
+          setsignUpState(fieldsState)
         } else {
           console.error("Registration failed");
         }
       })
-      .catch((error) => {
-        console.error("Registration error:", error);
-      });
   };
 
   return (

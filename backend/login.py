@@ -16,8 +16,12 @@ users_collection = db['users']
 @app.route('/api/users', methods=['POST'])
 def register_user():
     data = request.get_json()
-    if 'username' not in data or 'emailaddress' not in data or 'password' not in data:
-        return jsonify({'message': 'Missing required fields: username, email address or password. please check these fields.'})
+    if 'username' not in data:
+        jsonify({'message': 'Username not in data'})
+    elif 'emailaddress' not in data:
+        jsonify({'message': 'Email not in data '})
+    elif 'password' not in data:
+        jsonify({'message': 'Password not in data '})
     
     username = data['username']
 
@@ -41,7 +45,7 @@ def get_users():
     credentials = list(users_collection.find({}))
     for users in credentials:
         users['_id'] = str(users['_id'])
-    return jsonify(users)
+    return jsonify(credentials)
 
 if __name__ == '__main__':
     app.run(debug=True)

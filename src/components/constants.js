@@ -34,9 +34,9 @@ export const signupFields = [
   },
   {
     labelText: "Email Address",
-    labelFor: "email-address",
-    id: "email-address",
-    name: "email-address",
+    labelFor: "emailaddress",
+    id: "emailaddress",
+    name: "emailaddress",
     type: "email",
     autoComplete: "email",
     isRequired: true,
